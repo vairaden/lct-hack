@@ -10,5 +10,10 @@
 }
 
 .banner {
+  grid-row: span 3;
+  border-radius: 40px 0 0 40px;
+}
+
+.loginForm {
   grid-row: span 2;
 }
