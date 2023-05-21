@@ -1,0 +1,22 @@
+@import "@/shared/styles/colors";
+
+.checkboxLabel {
+  display: flex;
+  align-items: center;
+
+  input {
+    display: none;
+  }
+
+  .customCheckbox {
+    margin-right: 24px;
+    height: 22px;
+    width: 22px;
+    border-radius: 20px;
+    background-color: $disabled-color;
+  }
+
+  input:checked + .customCheckbox {
+    background-color: $accent-color;
+  }
+}

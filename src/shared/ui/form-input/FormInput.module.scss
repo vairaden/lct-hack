@@ -1,0 +1,11 @@
+@import "@/shared/styles/colors";
+
+.formInput {
+  input {
+    border: none;
+    border-radius: 12px;
+    height: 40px;
+    width: 100%;
+    background-color: $disabled-color;
+  }
+}

@@ -1,6 +1,7 @@
 import { VacancyList } from "@/widgets/vacancy-list";
 
 import styles from "./ApplicationsPage.module.scss";
+import { Checkbox } from "../../../shared/ui/checkbox";
 
 export default function ApplicationsPage() {
   return (
@@ -11,13 +12,12 @@ export default function ApplicationsPage() {
       </div>
       <div className={styles.separator} />
       <main className={styles.mainSection}>
-        <div className={styles.filters}>
+        <div>
           <h2>Фильтры</h2>
-          <label>
-            <input type="checkbox" />
-            <div className={styles.customCheckbox} />
-            Параметр
-          </label>
+          <Checkbox>Параметр</Checkbox>
+          <Checkbox>Параметр</Checkbox>
+          <Checkbox>Параметр</Checkbox>
+          <Checkbox>Параметр</Checkbox>
         </div>
         <VacancyList />
       </main>

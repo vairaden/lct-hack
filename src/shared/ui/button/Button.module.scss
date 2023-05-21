@@ -1,0 +1,9 @@
+@import "@/shared/styles/colors";
+
+.button {
+  padding: 10px;
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  background-color: $accent-color;
+}
