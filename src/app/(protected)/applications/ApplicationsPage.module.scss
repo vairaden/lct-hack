@@ -1,0 +1,39 @@
+@import "@/shared/styles/colors";
+
+.heading {
+  display: flex;
+  justify-content: space-between;
+}
+
+.separator {
+  background-color: black;
+  height: 1px;
+  margin: 20px 0 20px 0;
+}
+
+.mainSection {
+  display: flex;
+}
+
+.filters {
+  input {
+    display: none;
+  }
+
+  label {
+    display: flex;
+    align-items: center;
+  }
+
+  .customCheckbox {
+    margin-right: 24px;
+    height: 22px;
+    width: 22px;
+    border-radius: 20px;
+    background-color: $disabled-color;
+  }
+
+  input:checked + .customCheckbox {
+    background-color: $accent-color;
+  }
+}

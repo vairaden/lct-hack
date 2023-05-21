@@ -1,1 +1,1 @@
-export { default as SocialLogin } from "./SocialLogin";
+export { SocialLogin } from "./SocialLogin";

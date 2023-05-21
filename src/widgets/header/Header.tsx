@@ -2,7 +2,7 @@ import Link from "next/link";
 import styles from "./Header.module.scss";
 import Image from "next/image";
 
-export default function Header() {
+export function Header() {
   return (
     <header className={styles.header}>
       <Link href="/">
