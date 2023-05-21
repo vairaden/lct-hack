@@ -1,3 +1,5 @@
+import styles from "./REgisterPage.module.scss";
+
 export default function RegisterPage() {
-  return <h1>Register</h1>;
+  return <div></div>;
 }

@@ -1,19 +1,5 @@
-.gridWrapper {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  translate: -50% -50%;
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 10px;
-  grid-auto-rows: minmax(100px, auto);
-}
-
-.banner {
-  grid-row: span 3;
-  border-radius: 40px 0 0 40px;
-}
-
-.loginForm {
-  grid-row: span 2;
+.loginSection {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
