@@ -1,9 +1,7 @@
 "use client";
-import Calendar from "react-calendar";
-import styles from "./HomePage.module.scss";
 import { useState } from "react";
 
-import "@/shared/styles/Calendar.scss";
+import { MyCalendar } from "@/shared/ui/calendar";
 
 export default function HomePage() {
   const [selectedDate, setSelectedDate] = useState(new Date());
@@ -11,7 +9,7 @@ export default function HomePage() {
   return (
     <main>
       {/* @ts-ignore: No overload matches this call */}
-      <Calendar onChange={setSelectedDate} value={selectedDate} />
+      <MyCalendar onChange={setSelectedDate} value={selectedDate} />
     </main>
   );
 }

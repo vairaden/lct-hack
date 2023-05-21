@@ -5,7 +5,7 @@ export function Button({
   type,
 }: {
   children: React.ReactNode;
-  type: "button" | "submit" | "reset" | undefined;
+  type?: "button" | "submit" | "reset";
 }) {
   return (
     <button className={styles.button} type={type}>

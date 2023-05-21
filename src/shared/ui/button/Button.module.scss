@@ -4,6 +4,15 @@
   padding: 10px;
   color: #fff;
   border: none;
-  border-radius: 20px;
+  border-radius: 10px;
   background-color: $accent-color;
+  cursor: pointer;
+
+  &:hover {
+    background-color: darken($accent-color, 10);
+  }
+
+  &:active {
+    background-color: darken($accent-color, 20);
+  }
 }

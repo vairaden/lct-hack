@@ -20,6 +20,7 @@
     "next": "13.4.3",
     "react": "18.2.0",
     "react-calendar": "^4.2.1",
+    "react-datepicker": "^4.11.0",
     "react-dom": "18.2.0",
     "react-redux": "^8.0.5",
     "typescript": "5.0.4"
@@ -32,6 +33,7 @@
     "@storybook/nextjs": "^7.0.12",
     "@storybook/react": "^7.0.12",
     "@storybook/testing-library": "^0.0.14-next.2",
+    "@types/react-datepicker": "^4.11.2",
     "eslint-plugin-storybook": "^0.6.12",
     "sass": "^1.62.1",
     "storybook": "^7.0.12"
