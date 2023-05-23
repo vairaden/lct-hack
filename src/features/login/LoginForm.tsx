@@ -8,9 +8,9 @@ import { FormInput } from "@/shared/ui/form-input";
 import Image from "next/image";
 
 export function LoginForm() {
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
-  const [stayLoggedIn, setStayLoggedIn] = useState();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [stayLoggedIn, setStayLoggedIn] = useState(false);
 
   return (
     <div className={styles.wrapper}>
@@ -19,8 +19,18 @@ export function LoginForm() {
         <h1>Вход</h1>
       </header>
       <form className={styles.loginForm}>
-        <FormInput />
-        <FormInput />
+        <FormInput
+          type="email"
+          placeholder="Email"
+          onChange={(e) => setEmail(e.target.value)}
+          value={email}
+        />
+        <FormInput
+          type="password"
+          placeholder="Пароль"
+          onChange={(e) => setPassword(e.target.value)}
+          value={password}
+        />
         <Checkbox>Остаться в системе</Checkbox>
         <Button type="submit">Войти</Button>
       </form>

@@ -11,7 +11,7 @@ export function Header() {
       <nav className={styles.navbar}>
         <ul>
           <li>
-            <Link href="/applications">Моя заявка</Link>
+            <Link href="/application">Моя заявка</Link>
           </li>
           <li>
             <Link href="/events">Мероприятия</Link>
