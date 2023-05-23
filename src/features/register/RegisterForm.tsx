@@ -9,17 +9,29 @@ import styles from "./RegisterForm.module.scss";
 import { FormEvent, useState } from "react";
 import { useRouter } from "next/navigation";
 import { MyDatePicker } from "@/shared/ui/datepicker";
+import { RadioButton } from "@/shared/ui/radio-button";
 
 export function RegisterForm() {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [birthday, setBirthday] = useState<Date | null>(new Date());
+  const [gender, setGender] = useState("");
   const [password, setPassword] = useState("");
   const [repeatedPassword, setRepeatedPassword] = useState("");
+  const [acceptedTerms, setAcceptedTerms] = useState(false);
 
   const router = useRouter();
   function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    console.log({
+      email,
+      name,
+      birthday,
+      gender,
+      password,
+      repeatedPassword,
+      acceptedTerms,
+    });
     router.push("/");
   }
 
@@ -46,10 +58,26 @@ export function RegisterForm() {
           selected={birthday}
           onChange={(date) => setBirthday(date)}
         />
-        <p>Пол</p>
-        <div>
-          <Checkbox>Женский</Checkbox>
-          <Checkbox>Мужской</Checkbox>
+        <div className={styles.genderSelection}>
+          <h3>Пол</h3>
+          <div className={styles.radioContainer}>
+            <RadioButton
+              checked={gender === "female"}
+              name="gender"
+              onChange={(e) => setGender(e.target.value)}
+              value="female"
+            >
+              Женский
+            </RadioButton>
+            <RadioButton
+              checked={gender === "male"}
+              name="gender"
+              onChange={(e) => setGender(e.target.value)}
+              value="male"
+            >
+              Мужской
+            </RadioButton>
+          </div>
         </div>
         <FormInput
           type="password"
@@ -63,7 +91,10 @@ export function RegisterForm() {
           onChange={(e) => setRepeatedPassword(e.target.value)}
           value={repeatedPassword}
         />
-        <Checkbox>
+        <Checkbox
+          checked={acceptedTerms}
+          onChange={(e) => setAcceptedTerms(e.target.checked)}
+        >
           <span style={{ fontSize: "10px" }}>
             Я Принимаю соглашение N-241- ПП «О стажировках молодых граждан» и
             Соглашение на обработку персональных данных

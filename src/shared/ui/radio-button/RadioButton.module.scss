@@ -1,0 +1,24 @@
+@import "@/shared/styles/colors";
+
+.radioLabel {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+  margin-right: 40px;
+
+  input {
+    display: none;
+  }
+
+  .customRadio {
+    margin-right: 20px;
+    min-height: 16px;
+    min-width: 16px;
+    border-radius: 20px;
+    background-color: $disabled-color;
+  }
+
+  input:checked + .customRadio {
+    background-color: $accent-color;
+  }
+}
