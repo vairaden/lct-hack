@@ -1,3 +1,5 @@
+import { userSchema } from "@/shared/types";
+
 async function register(
   fio: string,
   email: string,
@@ -31,7 +33,7 @@ async function login(email: string, password: string, stayLoggedIn: boolean) {
   });
 
   if (res.ok) {
-    return await res.json();
+    return userSchema.parse(await res.json());
   } else {
     throw res;
   }

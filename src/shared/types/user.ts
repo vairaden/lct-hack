@@ -1,17 +1,24 @@
 import { z } from "zod";
 
 export const userSchema = z.object({
+  id: z.number(),
   email: z.string(),
   phone: z.string(),
   fio: z.string(),
-  gender: z.literal("M").or(z.literal("F")),
+  gender: z.string(),
   birthday: z.string(),
-  role: z.literal("mentor").or(z.literal("hr")).or(z.literal("candidate")),
+  role: z.union([
+    z.literal("mentor"),
+    z.literal("hr"),
+    z.literal("candidate"),
+    z.literal("curator"),
+  ]),
   first_access: z.string(),
   last_access: z.string(),
   last_ip: z.string(),
   active: z.boolean(),
-  password: z.string(),
+  telegram: z.string().nullable(),
+  vk: z.string().nullable(),
 });
 
 export type User = z.infer<typeof userSchema>;
