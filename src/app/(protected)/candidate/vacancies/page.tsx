@@ -6,7 +6,7 @@ import { Checkbox } from "@/shared/ui/checkbox";
 import { FormInput } from "@/shared/ui/form-input";
 import { useState } from "react";
 
-export default function ApplicationsPage() {
+export default function VacancyListPage() {
   const [searchQuery, setSearchQuery] = useState("");
 
   return (
@@ -24,12 +24,12 @@ export default function ApplicationsPage() {
       <main className={styles.mainSection}>
         <div>
           <h2>Фильтры</h2>
-          <Checkbox>Параметр</Checkbox>
+          {/* <Checkbox>Параметр</Checkbox> */}
           <div className={styles.separator} />
-          <Checkbox>Параметр</Checkbox>
-          <Checkbox>Параметр</Checkbox>
+          {/* <Checkbox>Параметр</Checkbox> */}
+          {/* <Checkbox>Параметр</Checkbox> */}
           <div className={styles.separator} />
-          <Checkbox>Параметр</Checkbox>
+          {/* <Checkbox>Параметр</Checkbox> */}
         </div>
         <VacancyList />
       </main>

@@ -1,5 +1,4 @@
 import { LoginForm } from "@/features/login";
-import LoginBanner from "../../../shared/assets/LoginBanner";
 import { SocialLogin } from "@/features/social-login";
 
 import styles from "./LoginPage.module.scss";

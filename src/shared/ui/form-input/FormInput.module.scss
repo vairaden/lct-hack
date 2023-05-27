@@ -1,14 +1,22 @@
 @import "@/shared/styles/colors";
 
+.inputLabel {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.labelText {
+  font-size: larger;
+  margin-bottom: 8px;
+}
+
 .formInput {
-  input {
-    border: none;
-    border-radius: 10px;
-    height: 48px;
-    width: 100%;
-    padding: 10px;
-    margin-top: 20px;
-    background-color: $disabled-color;
-    color: $text-gray;
-  }
+  border: none;
+  border-radius: 10px;
+  height: 48px;
+  width: 100%;
+  padding: 10px;
+  background-color: $disabled-color;
+  color: $text-gray;
 }
