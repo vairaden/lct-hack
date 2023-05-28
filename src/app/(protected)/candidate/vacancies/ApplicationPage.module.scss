@@ -1,6 +1,7 @@
 .heading {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .separator {
@@ -11,4 +12,8 @@
 
 .mainSection {
   display: flex;
+}
+
+.listContainer {
+  padding: 0 20px;
 }

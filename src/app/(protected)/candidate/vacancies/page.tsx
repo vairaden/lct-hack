@@ -1,6 +1,6 @@
 "use client";
-import { VacancyList } from "@/widgets/vacancy-list";
 
+import { VacancyList } from "@/widgets/vacancy-list";
 import styles from "./ApplicationPage.module.scss";
 import { Checkbox } from "@/shared/ui/checkbox";
 import { FormInput } from "@/shared/ui/form-input";
@@ -41,13 +41,15 @@ export default function VacancyListPage() {
             Параметр
           </Checkbox>
         </div>
-        {isLoading ? (
-          <h2>Загрузка...</h2>
-        ) : data ? (
-          <VacancyList data={data} />
-        ) : (
-          <></>
-        )}
+        <div className={styles.listContainer}>
+          {isLoading ? (
+            <h2>Загрузка...</h2>
+          ) : data ? (
+            <VacancyList data={data} />
+          ) : (
+            <h2>Отсутствуют активные вакансии</h2>
+          )}
+        </div>
       </main>
     </>
   );
