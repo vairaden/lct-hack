@@ -8,13 +8,21 @@ async function register(
   birthday: string,
   password: string
 ) {
-  const res = await fetch(process.env.NEXT_PUBLIC_API_URL + "/users", {
+  const res = await fetch(process.env.NEXT_PUBLIC_API_URL + "/users/", {
     method: "post",
     headers: {
       "Content-Type": "application/json",
     },
     credentials: "include",
-    body: JSON.stringify({ fio, email, phone, gender, birthday, password }),
+    body: JSON.stringify({
+      fio,
+      email,
+      phone,
+      gender,
+      birthday,
+      password,
+      role: "candidate",
+    }),
   });
 
   if (res.ok) {

@@ -10,10 +10,12 @@ import { FormEvent, useState } from "react";
 import { useRouter } from "next/navigation";
 import { MyDatePicker } from "@/shared/ui/datepicker";
 import { RadioButton } from "@/shared/ui/radio-button";
+import { register } from "@/shared/api";
 
 export function RegisterForm() {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
   const [birthday, setBirthday] = useState<Date | null>(new Date());
   const [gender, setGender] = useState("");
   const [password, setPassword] = useState("");
@@ -21,9 +23,20 @@ export function RegisterForm() {
   const [acceptedTerms, setAcceptedTerms] = useState(false);
 
   const router = useRouter();
-  function handleSubmit(e: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    // router.push("/");
+
+    if (birthday) {
+      const res = await register(
+        name,
+        email,
+        phone,
+        gender,
+        birthday.toISOString().split("T")[0],
+        password
+      );
+      router.push("/login");
+    }
   }
 
   return (
@@ -44,6 +57,12 @@ export function RegisterForm() {
           placeholder="ФИО"
           onChange={(e) => setName(e.target.value)}
           value={name}
+        />
+        <FormInput
+          type="tel"
+          placeholder="Номер телефона"
+          onChange={(e) => setPhone(e.target.value)}
+          value={phone}
         />
         <MyDatePicker
           selected={birthday}
