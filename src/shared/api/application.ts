@@ -1,6 +1,6 @@
 async function getApplicationDetails() {
   const res = await fetch(
-    "http://46.138.243.191:54000/api/intern_application/my"
+    process.env.NEXT_PUBLIC_API_URL + "/api/intern_application/my"
   );
 
   if (res.ok) {
@@ -18,7 +18,7 @@ async function createApplication(
   graduation_date: string
 ) {
   const res = await fetch(
-    "http://46.138.243.191:54000/api/intern_application/my",
+    process.env.NEXT_PUBLIC_API_URL + "/api/intern_application/my",
     {
       method: "post",
       headers: {
@@ -49,7 +49,7 @@ async function updateApplicationDetails(
   graduation_date: string
 ) {
   const res = await fetch(
-    "http://46.138.243.191:54000/api/intern_application/my",
+    process.env.NEXT_PUBLIC_API_URL + "/api/intern_application/my",
     {
       method: "update",
       headers: {
@@ -74,7 +74,8 @@ async function updateApplicationDetails(
 }
 async function getApplicationsList(offset: number, limit: number) {
   const res = await fetch(
-    "http://46.138.243.191:54000/api/intern_application/all?" +
+    process.env.NEXT_PUBLIC_API_URL +
+      "/api/intern_application/all?" +
       new URLSearchParams({
         offset: offset.toString(),
         limit: limit.toString(),

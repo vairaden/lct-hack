@@ -1,3 +1,5 @@
+"use client";
+
 import { useUserStore } from "@/shared/store";
 
 export default function MentorHomePage() {

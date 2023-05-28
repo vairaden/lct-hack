@@ -8,7 +8,7 @@ async function register(
   birthday: string,
   password: string
 ) {
-  const res = await fetch("http://46.138.243.191:54000/api/users", {
+  const res = await fetch(process.env.NEXT_PUBLIC_API_URL + "/api/users", {
     method: "post",
     headers: {
       "Content-Type": "application/json",
@@ -24,13 +24,16 @@ async function register(
 }
 
 async function login(email: string, password: string, stayLoggedIn: boolean) {
-  const res = await fetch("http://46.138.243.191:54000/api/users/login", {
-    method: "post",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ email, password, stay_loggedin: stayLoggedIn }),
-  });
+  const res = await fetch(
+    process.env.NEXT_PUBLIC_API_URL + "/api/users/login",
+    {
+      method: "post",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email, password, stay_loggedin: stayLoggedIn }),
+    }
+  );
 
   if (res.ok) {
     return userSchema.parse(await res.json());
@@ -40,7 +43,7 @@ async function login(email: string, password: string, stayLoggedIn: boolean) {
 }
 
 async function logout() {
-  const res = await fetch("http://46.138.243.191:54000/api/users", {
+  const res = await fetch(process.env.NEXT_PUBLIC_API_URL + "/api/users", {
     method: "delete",
   });
 
@@ -52,7 +55,7 @@ async function logout() {
 }
 
 async function getProfileDetails() {
-  const res = await fetch("http://46.138.243.191:54000/api/users");
+  const res = await fetch(process.env.NEXT_PUBLIC_API_URL + "/api/users");
 
   if (res.ok) {
     return await res.json();
@@ -71,7 +74,7 @@ async function updateProfileDetails(
   role: string,
   active: boolean
 ) {
-  const res = await fetch("http://46.138.243.191:54000/api/users", {
+  const res = await fetch(process.env.NEXT_PUBLIC_API_URL + "/api/users", {
     method: "update",
     headers: {
       "Content-Type": "application/json",

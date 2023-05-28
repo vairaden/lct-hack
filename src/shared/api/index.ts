@@ -12,3 +12,12 @@ export {
   updateApplicationDetails,
   getApplicationsList,
 } from "./application";
+
+export {
+  acceptVacancyOffer,
+  createVacancy,
+  deleteVacancy,
+  getVacancies,
+  getVacancyOffers,
+  publishVacancy,
+} from "./vacancy";

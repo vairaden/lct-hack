@@ -1,8 +1,11 @@
 "use client";
 import { FormInput } from "@/shared/ui/form-input";
 import { Button } from "@/shared/ui/button";
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 import { MyDatePicker } from "@/shared/ui/datepicker";
+import { useRouter } from "next/navigation";
+
+import styles from "./ApplicationPage.module.scss";
 
 export default function ApplicationPage() {
   const [course, setCourse] = useState("");
@@ -11,8 +14,16 @@ export default function ApplicationPage() {
   const [graduationDate, setGraduationDate] = useState<Date | null>(null);
   const [resume, setResume] = useState("");
 
+  const router = useRouter();
+
+  function handleSubmit(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+
+    router.push("/candidate");
+  }
+
   return (
-    <form>
+    <form onSubmit={handleSubmit} className={styles.form}>
       <FormInput
         type="text"
         onChange={(e) => setCourse(e.target.value)}
@@ -37,7 +48,13 @@ export default function ApplicationPage() {
       <MyDatePicker selected={graduationDate} onChange={setGraduationDate}>
         Дата выпуска
       </MyDatePicker>
-      <input type="file" />
+      <FormInput
+        type="text"
+        onChange={(e) => setResume(e.target.value)}
+        value={resume}
+      >
+        Ссылка на резюме
+      </FormInput>
       <Button type="submit">Оставить заявку</Button>
     </form>
   );

@@ -1,7 +1,11 @@
+.panelContainer {
+  padding: 0 20px 20px 20px;
+  max-width: 1440px;
+  margin: auto;
+}
 .panel {
-  background-color: #fff;
   height: calc(100vh - 145px);
-  margin: 0 20px 20px 20px;
+  background-color: #fff;
   border-radius: 40px;
   padding: 40px;
   overflow-y: auto;
