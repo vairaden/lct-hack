@@ -9,6 +9,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { login } from "@/shared/api";
 import { useUserStore } from "@/shared/store";
+import Link from "next/link";
 
 export function LoginForm() {
   const [email, setEmail] = useState("");
@@ -52,6 +53,7 @@ export function LoginForm() {
         </Checkbox>
         <Button type="submit">Войти</Button>
       </form>
+      <Link href="/register">Зарегистрироваться</Link>
     </div>
   );
 }

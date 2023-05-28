@@ -11,6 +11,7 @@ import { useRouter } from "next/navigation";
 import { MyDatePicker } from "@/shared/ui/datepicker";
 import { RadioButton } from "@/shared/ui/radio-button";
 import { register } from "@/shared/api";
+import Link from "next/link";
 
 export function RegisterForm() {
   const [email, setEmail] = useState("");
@@ -112,6 +113,7 @@ export function RegisterForm() {
         </Checkbox>
         <Button type="submit">Зарегистрироваться</Button>
       </form>
+      <Link href="/login">Войти</Link>
     </div>
   );
 }
