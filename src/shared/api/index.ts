@@ -10,7 +10,7 @@ export {
   getApplicationDetails,
   createApplication,
   updateApplicationDetails,
-  getApplicationsList,
+  getApplicationsToApprove,
 } from "./application";
 
 export {
@@ -18,6 +18,6 @@ export {
   createVacancy,
   deleteVacancy,
   getVacancies,
-  getVacancyOffers,
+  getVacancyFilters,
   publishVacancy,
 } from "./vacancy";
