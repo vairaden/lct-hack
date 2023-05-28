@@ -6,20 +6,31 @@ import { MyDatePicker } from "@/shared/ui/datepicker";
 import { useRouter } from "next/navigation";
 
 import styles from "./ApplicationPage.module.scss";
+import { createApplication } from "@/shared/api";
 
 export default function ApplicationPage() {
   const [course, setCourse] = useState("");
   const [citizenship, setCitizenship] = useState("");
+  const [city, setCity] = useState("");
   const [education, setEducation] = useState("");
   const [graduationDate, setGraduationDate] = useState<Date | null>(null);
   const [resume, setResume] = useState("");
 
   const router = useRouter();
 
-  function handleSubmit(e: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-
-    router.push("/candidate");
+    if (graduationDate) {
+      const res = await createApplication(
+        course,
+        education,
+        resume,
+        citizenship,
+        city,
+        graduationDate.toISOString().split("T")[0]
+      );
+      router.push("/candidate");
+    }
   }
 
   return (
@@ -37,6 +48,13 @@ export default function ApplicationPage() {
         value={citizenship}
       >
         Гражданство
+      </FormInput>
+      <FormInput
+        type="text"
+        onChange={(e) => setCity(e.target.value)}
+        value={city}
+      >
+        Город проживания
       </FormInput>
       <FormInput
         type="text"

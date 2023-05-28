@@ -25,6 +25,7 @@ const CustomInput = forwardRef(
         value={value}
         ref={ref}
         onClick={onClick}
+        onChange={() => {}}
         placeholder={placeholder}
       >
         {children}

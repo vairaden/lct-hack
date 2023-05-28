@@ -23,16 +23,7 @@ export function RegisterForm() {
   const router = useRouter();
   function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    console.log({
-      email,
-      name,
-      birthday,
-      gender,
-      password,
-      repeatedPassword,
-      acceptedTerms,
-    });
-    router.push("/");
+    // router.push("/");
   }
 
   return (

@@ -21,7 +21,6 @@ export function LoginForm() {
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const data = await login(email, password, stayLoggedIn);
-    console.log(data);
     setUser(data);
     router.push("/" + data.role);
   }

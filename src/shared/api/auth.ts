@@ -8,11 +8,12 @@ async function register(
   birthday: string,
   password: string
 ) {
-  const res = await fetch(process.env.NEXT_PUBLIC_API_URL + "/api/users", {
+  const res = await fetch(process.env.NEXT_PUBLIC_API_URL + "/users", {
     method: "post",
     headers: {
       "Content-Type": "application/json",
     },
+    credentials: "include",
     body: JSON.stringify({ fio, email, phone, gender, birthday, password }),
   });
 
@@ -24,16 +25,14 @@ async function register(
 }
 
 async function login(email: string, password: string, stayLoggedIn: boolean) {
-  const res = await fetch(
-    process.env.NEXT_PUBLIC_API_URL + "/api/users/login",
-    {
-      method: "post",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ email, password, stay_loggedin: stayLoggedIn }),
-    }
-  );
+  const res = await fetch(process.env.NEXT_PUBLIC_API_URL + "/users/login", {
+    method: "post",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    credentials: "include",
+    body: JSON.stringify({ email, password, stay_loggedin: stayLoggedIn }),
+  });
 
   if (res.ok) {
     return userSchema.parse(await res.json());
@@ -43,8 +42,9 @@ async function login(email: string, password: string, stayLoggedIn: boolean) {
 }
 
 async function logout() {
-  const res = await fetch(process.env.NEXT_PUBLIC_API_URL + "/api/users", {
+  const res = await fetch(process.env.NEXT_PUBLIC_API_URL + "/users", {
     method: "delete",
+    credentials: "include",
   });
 
   if (res.ok) {
@@ -55,7 +55,9 @@ async function logout() {
 }
 
 async function getProfileDetails() {
-  const res = await fetch(process.env.NEXT_PUBLIC_API_URL + "/api/users");
+  const res = await fetch(process.env.NEXT_PUBLIC_API_URL + "/users", {
+    credentials: "include",
+  });
 
   if (res.ok) {
     return await res.json();
@@ -74,11 +76,12 @@ async function updateProfileDetails(
   role: string,
   active: boolean
 ) {
-  const res = await fetch(process.env.NEXT_PUBLIC_API_URL + "/api/users", {
+  const res = await fetch(process.env.NEXT_PUBLIC_API_URL + "/users", {
     method: "update",
     headers: {
       "Content-Type": "application/json",
     },
+    credentials: "include",
     body: JSON.stringify({
       email,
       password,

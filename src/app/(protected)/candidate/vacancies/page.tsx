@@ -5,9 +5,11 @@ import styles from "./ApplicationPage.module.scss";
 import { Checkbox } from "@/shared/ui/checkbox";
 import { FormInput } from "@/shared/ui/form-input";
 import { useState } from "react";
+import { useVacancyList } from "@/shared/hooks";
 
 export default function VacancyListPage() {
   const [searchQuery, setSearchQuery] = useState("");
+  const { data, isLoading, error } = useVacancyList();
 
   return (
     <>
@@ -24,14 +26,28 @@ export default function VacancyListPage() {
       <main className={styles.mainSection}>
         <div>
           <h2>Фильтры</h2>
-          {/* <Checkbox>Параметр</Checkbox> */}
+          <Checkbox checked={false} onChange={() => {}}>
+            Параметр
+          </Checkbox>
           <div className={styles.separator} />
-          {/* <Checkbox>Параметр</Checkbox> */}
-          {/* <Checkbox>Параметр</Checkbox> */}
+          <Checkbox checked={false} onChange={() => {}}>
+            Параметр
+          </Checkbox>
+          <Checkbox checked={false} onChange={() => {}}>
+            Параметр
+          </Checkbox>
           <div className={styles.separator} />
-          {/* <Checkbox>Параметр</Checkbox> */}
+          <Checkbox checked={false} onChange={() => {}}>
+            Параметр
+          </Checkbox>
         </div>
-        <VacancyList />
+        {isLoading ? (
+          <h2>Загрузка...</h2>
+        ) : data ? (
+          <VacancyList data={data} />
+        ) : (
+          <></>
+        )}
       </main>
     </>
   );

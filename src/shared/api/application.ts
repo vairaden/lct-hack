@@ -1,6 +1,9 @@
 async function getApplicationDetails() {
   const res = await fetch(
-    process.env.NEXT_PUBLIC_API_URL + "/api/intern_application/my"
+    process.env.NEXT_PUBLIC_API_URL + "/intern_application/my",
+    {
+      credentials: "include",
+    }
   );
 
   if (res.ok) {
@@ -15,20 +18,23 @@ async function createApplication(
   education: string,
   resume: string,
   citizenship: string,
+  city: string,
   graduation_date: string
 ) {
   const res = await fetch(
-    process.env.NEXT_PUBLIC_API_URL + "/api/intern_application/my",
+    process.env.NEXT_PUBLIC_API_URL + "/intern_application/my",
     {
       method: "post",
       headers: {
         "Content-Type": "application/json",
       },
+      credentials: "include",
       body: JSON.stringify({
         course,
         education,
         resume,
         citizenship,
+        city,
         graduation_date,
       }),
     }
@@ -40,6 +46,7 @@ async function createApplication(
     throw res;
   }
 }
+
 async function updateApplicationDetails(
   id: number,
   course: string,
@@ -49,12 +56,13 @@ async function updateApplicationDetails(
   graduation_date: string
 ) {
   const res = await fetch(
-    process.env.NEXT_PUBLIC_API_URL + "/api/intern_application/my",
+    process.env.NEXT_PUBLIC_API_URL + "/intern_application/my",
     {
       method: "update",
       headers: {
         "Content-Type": "application/json",
       },
+      credentials: "include",
       body: JSON.stringify({
         id,
         course,
@@ -75,11 +83,14 @@ async function updateApplicationDetails(
 async function getApplicationsList(offset: number, limit: number) {
   const res = await fetch(
     process.env.NEXT_PUBLIC_API_URL +
-      "/api/intern_application/all?" +
+      "/intern_application/all?" +
       new URLSearchParams({
         offset: offset.toString(),
         limit: limit.toString(),
-      })
+      }),
+    {
+      credentials: "include",
+    }
   );
 
   if (res.ok) {
