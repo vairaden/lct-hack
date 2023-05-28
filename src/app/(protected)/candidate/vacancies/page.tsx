@@ -2,14 +2,23 @@
 
 import { VacancyList } from "@/widgets/vacancy-list";
 import styles from "./ApplicationPage.module.scss";
-import { Checkbox } from "@/shared/ui/checkbox";
 import { FormInput } from "@/shared/ui/form-input";
 import { useState } from "react";
-import { useVacancyList } from "@/shared/hooks";
+import { useVacancyFilters, useVacancyList } from "@/shared/hooks";
+import { RadioButton } from "@/shared/ui/radio-button";
 
 export default function VacancyListPage() {
   const [searchQuery, setSearchQuery] = useState("");
-  const { data, isLoading, error } = useVacancyList();
+  const [selectedCity, setSelectedCity] = useState("");
+  const [selectedOrganisation, setSelectedOrganisation] = useState("");
+  const [selectedTag, setSelectedTag] = useState("");
+
+  const { data, isLoading } = useVacancyList(
+    selectedCity,
+    selectedOrganisation,
+    selectedTag
+  );
+  const { data: filters, isLoading: filtersLoading } = useVacancyFilters();
 
   return (
     <>
@@ -26,20 +35,41 @@ export default function VacancyListPage() {
       <main className={styles.mainSection}>
         <div>
           <h2>Фильтры</h2>
-          <Checkbox checked={false} onChange={() => {}}>
-            Параметр
-          </Checkbox>
+          {filters?.city.map((city) => (
+            <RadioButton
+              value={city}
+              checked={city === selectedCity}
+              name="city"
+              onChange={(e) => setSelectedCity(e.target.value)}
+              key={city}
+            >
+              {city}
+            </RadioButton>
+          ))}
           <div className={styles.separator} />
-          <Checkbox checked={false} onChange={() => {}}>
-            Параметр
-          </Checkbox>
-          <Checkbox checked={false} onChange={() => {}}>
-            Параметр
-          </Checkbox>
+          {filters?.organisations.map((organisation) => (
+            <RadioButton
+              value={organisation}
+              checked={organisation === selectedOrganisation}
+              name="organisation"
+              onChange={(e) => setSelectedOrganisation(e.target.value)}
+              key={organisation}
+            >
+              {organisation}
+            </RadioButton>
+          ))}
           <div className={styles.separator} />
-          <Checkbox checked={false} onChange={() => {}}>
-            Параметр
-          </Checkbox>
+          {filters?.tags.map((tag) => (
+            <RadioButton
+              value={tag}
+              checked={tag === selectedTag}
+              name="tag"
+              onChange={(e) => setSelectedTag(e.target.value)}
+              key={tag}
+            >
+              {tag}
+            </RadioButton>
+          ))}
         </div>
         <div className={styles.listContainer}>
           {isLoading ? (

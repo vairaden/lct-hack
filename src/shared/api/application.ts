@@ -80,7 +80,13 @@ async function updateApplicationDetails(
     throw res;
   }
 }
-async function getApplicationsList(offset: number, limit: number) {
+async function getApplicationsToApprove({
+  offset,
+  limit,
+}: {
+  offset: number;
+  limit: number;
+}) {
   const res = await fetch(
     process.env.NEXT_PUBLIC_API_URL +
       "/intern_application/all?" +
@@ -100,9 +106,30 @@ async function getApplicationsList(offset: number, limit: number) {
   }
 }
 
+async function approveApplication(id: number) {
+  const res = await fetch(
+    process.env.NEXT_PUBLIC_API_URL +
+      "/intern_application/approve?" +
+      new URLSearchParams({
+        intern_application_id: id.toString(),
+      }),
+    {
+      method: "post",
+      credentials: "include",
+    }
+  );
+
+  if (res.ok) {
+    return await res.json();
+  } else {
+    throw res;
+  }
+}
+
 export {
   getApplicationDetails,
   createApplication,
   updateApplicationDetails,
-  getApplicationsList,
+  getApplicationsToApprove,
+  approveApplication,
 };

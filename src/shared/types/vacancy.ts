@@ -17,4 +17,12 @@ export const vacancySchema = z.object({
   ]),
 });
 
+export const vacancyFiltersSchema = z.object({
+  tags: z.string().array(),
+  organisations: z.string().array(),
+  city: z.string().array(),
+});
+
 export type Vacancy = z.infer<typeof vacancySchema>;
+
+export type VacancyFilers = z.infer<typeof vacancyFiltersSchema>;
